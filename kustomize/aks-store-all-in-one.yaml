@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongodb
+  namespace: aks-store
 spec:
   serviceName: mongodb
   replicas: 1
@@ -41,6 +42,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongodb
+  namespace: aks-store
 spec:
   ports:
   - port: 27017
@@ -55,11 +57,13 @@ data:
 kind: ConfigMap
 metadata:
   name: rabbitmq-enabled-plugins
+  namespace: aks-store
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: rabbitmq
+  namespace: aks-store
 spec:
   serviceName: rabbitmq
   replicas: 1
@@ -109,6 +113,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rabbitmq
+  namespace: aks-store
 spec:
   selector:
     app: rabbitmq
@@ -125,6 +130,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: order-service
+  namespace: aks-store
 spec:
   replicas: 1
   selector:
@@ -199,6 +205,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: order-service
+  namespace: aks-store
 spec:
   type: ClusterIP
   ports:
@@ -212,6 +219,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: makeline-service
+  namespace: aks-store
 spec:
   replicas: 1
   selector:
@@ -270,6 +278,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: makeline-service
+  namespace: aks-store
 spec:
   type: ClusterIP
   ports:
@@ -283,6 +292,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: product-service
+  namespace: aks-store
 spec:
   replicas: 1
   selector:
@@ -329,6 +339,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: product-service
+  namespace: aks-store
 spec:
   type: ClusterIP
   ports:
@@ -342,6 +353,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: store-front
+  namespace: aks-store
 spec:
   replicas: 1
   selector:
@@ -398,6 +410,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: store-front
+  namespace: aks-store
 spec:
   ports:
   - port: 80
@@ -410,6 +423,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: store-admin
+  namespace: aks-store
 spec:
   replicas: 1
   selector:
@@ -466,6 +480,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: store-admin
+  namespace: aks-store
 spec:
   ports:
   - port: 80
@@ -478,6 +493,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: virtual-customer
+  namespace: aks-store
 spec:
   replicas: 1
   selector:
@@ -510,6 +526,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: virtual-worker
+  namespace: aks-store
 spec:
   replicas: 1
   selector:
