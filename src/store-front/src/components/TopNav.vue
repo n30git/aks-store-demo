@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div class="logo">
-      <a href="/">Azure Pet Supplies v23.0.0</a>
+      <a href="/">Azure Pet Supplies v24.0.0</a>
     </div>
     <button class="hamburger" @click="toggleNav">
       <span class="hamburger-icon"></span>
